@@ -657,15 +657,4 @@ function cfct_post_id_to_slug($id) {
 	return $post->post_name;
 }
 
-function cfct_get_logout_url($url) {
-	if(function_exists('wp_logout_url')) {
-		return wp_logout_url($url);
-	} else {
-		return get_bloginfo('wpurl') . '/wp-login.php?action=logout';
-	}
-}
-function cfct_logout_url($url) {
-	echo cfct_get_logout_url($url);
-}
-
 ?>
