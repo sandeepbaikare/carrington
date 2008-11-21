@@ -20,33 +20,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 //	ini_set('display_errors', '1');
 //	ini_set('error_reporting', E_ALL);
 
-load_theme_textdomain('carrington');
-
-define('CFCT_DEBUG', false);
-define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
-define('CFCT_HOME_LIST_LENGTH', 5);
-define('CFCT_HOME_LATEST_LENGTH', 250);
-
-$cfct_options = array(
-	'cfct_home_column_1_cat'
-	, 'cfct_home_column_1_content'
-	, 'cfct_latest_limit_1'
-	, 'cfct_list_limit_1'
-	, 'cfct_home_column_2_cat'
-	, 'cfct_home_column_2_content'
-	, 'cfct_latest_limit_2'
-	, 'cfct_list_limit_2'
-	, 'cfct_home_column_3_cat'
-	, 'cfct_home_column_3_content'
-	, 'cfct_latest_limit_3'
-	, 'cfct_list_limit_3'
-	, 'cfct_about_text'
-	, 'cfct_ajax_load'
-	, 'cfct_credit'
-	, 'cfct_posts_per_archive_page'
-	, 'cfct_wp_footer'
-);
-
+include_once(CFCT_PATH.'functions/compatibility.php');
 include_once(CFCT_PATH.'functions/admin.php');
 include_once(CFCT_PATH.'functions/templates.php');
 include_once(CFCT_PATH.'functions/utility.php');
