@@ -23,6 +23,12 @@ $orig_post = $post;
 
 ?>
 
+						<?php wp_list_pages('title_li='); ?>
+						<li class="secondary"><?php wp_loginout(); ?></li>
+						<?php wp_register('<li class="secondary">', '</li>'); ?> 
+				<?php cfct_form('search'); ?>
+
+
 <div id="sidebar">
 	<div id="carrington-subscribe" class="widget">
 		<h2 class="widget-title"><?php _e('Subscribe', 'carrington-blog'); ?></h2>
