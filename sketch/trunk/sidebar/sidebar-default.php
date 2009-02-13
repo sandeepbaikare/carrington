@@ -18,47 +18,24 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $post;
-$orig_post = $post;
-
 ?>
-
-						<?php wp_list_pages('title_li='); ?>
-						<li class="secondary"><?php wp_loginout(); ?></li>
-						<?php wp_register('<li class="secondary">', '</li>'); ?> 
-				<?php cfct_form('search'); ?>
-
 
 <div id="sidebar">
-	<div id="carrington-subscribe" class="widget">
-		<h2 class="widget-title"><?php _e('Subscribe', 'carrington-blog'); ?></h2>
-		<a class="feed" title="RSS 2.0 feed for posts" rel="alternate" href="<?php bloginfo('rss2_url') ?>"><?php _e('Site <acronym title="Really Simple Syndication">RSS</acronym> feed', 'carrington-blog'); ?></a>
-	</div><!--.widget-->
-<?php
-$about_text = cfct_about_text();
-if (!empty($about_text)) {
-?>
-	<div id="carrington-about" class="widget">
-		<div class="about">
-			<h2 class="title"><?php printf(__('About %s', 'carrington-blog'), get_bloginfo('name')); ?></h2>
-<?php
-	echo $about_text;
-?>
-		</div>
-	</div><!--.widget-->
-<?php
-}
-?>
-
 	<div id="primary-sidebar">
 <?php
 $post = $orig_post;
 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') ) {
 ?>
-		<div id="carrington-archives" class="widget">
+		<div class="widget">
 			<h2 class="title">Archives</h2>
 			<ul>
 				<?php wp_get_archives(); ?>
+			</ul>
+		</div><!--.widget-->
+		<div class="widget">
+			<h2 class="title">Pages</h2>
+			<ul>
+				<?php wp_list_pages('title_li='); ?>
 			</ul>
 		</div><!--.widget-->
 <?php
@@ -67,13 +44,19 @@ if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') 
 	</div><!--#primary-sidebar-->
 	<div id="secondary-sidebar">
 <?php
-$post = $orig_post;
 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Secondary Sidebar') ) { 
 ?>
-		<div id="carrington-tags" class="widget">
+		<div class="widget">
+			<h2 class="title">Search</h2>
+			<?php cfct_form('search'); ?>
+		</div><!--.widget-->
+		<div class="widget">
 			<h2 class="title">Tags</h2>
 			<?php wp_tag_cloud('smallest=10&largest=18&unit=px'); ?>
 		</div><!--.widget-->
+		<?php wp_register('<p>', '</p>'); ?> 
+		<p><?php wp_loginout(); ?></p>
+
 <?php
 }
 ?>
