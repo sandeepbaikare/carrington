@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -19,7 +19,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 if (have_posts()) {
-	echo '<ol class="archive">';
+	echo '<ol>';
 	while (have_posts()) {
 		the_post();
 ?>
@@ -27,11 +27,10 @@ if (have_posts()) {
 <?php
 		cfct_excerpt();
 ?>
-		<div id="post-content-<?php the_ID(); ?>-target"></div>
 	</li>
 <?php
 	}
-	echo '</ol><!--.archive-->';
+	echo '</ol>';
 }
 
 ?>

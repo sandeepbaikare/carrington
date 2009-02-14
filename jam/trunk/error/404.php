@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -20,17 +20,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 get_header();
 
-?>
-<div id="content">
-<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'carrington-blog'); ?></p>
-
-<?php
+_e('Sorry, we\'re not sure what you\'re looking for here.', 'carrington-jam'); 
 
 cfct_form('search');
 
-?>
-</div><!--#content-->
-<?php 
 get_sidebar();
 
 get_footer();

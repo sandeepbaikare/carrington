@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -21,7 +21,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $comment;
 
 if ($comment->comment_approved == '0') {
-	_e('Your comment is awaiting moderation.', 'carrington-blog');
+	_e('Your comment is awaiting moderation.', 'carrington-jam');
 }
 
 if (function_exists('get_avatar')) { 
@@ -32,14 +32,6 @@ get_comment_author_link();
 
 comment_text();
 
-printf(
-	__('<span class="on">on</span> <abbr class="published" title="%s"><a title="Permanent link to this comment" rel="bookmark" href="%s#comment-%s">%s</a></abbr>'
-	, 'carrington'
-	)
-	, get_comment_date('Y-m-d\TH:i:sO')
-	, get_permalink()
-	, get_comment_ID()
-	, get_comment_date()
-);
+comment_date();
 
-edit_comment_link(__('Edit This', 'carrington-blog'), '', '');
+edit_comment_link(__('Edit This', 'carrington-jam'), '', '');

@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -19,9 +19,9 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<div class="hentry excerpt <?php sandbox_post_class() ?>">
+<div>
 
-	<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
 	
 <?php
 
@@ -31,7 +31,7 @@ the_time('F j, Y');
 
 the_category(', ');
 
-comments_popup_link(__('No comments', 'carrington-blog'), __('1 comment', 'carrington-blog'), __('% comments', 'carrington-blog'));
+comments_popup_link(__('No comments', 'carrington-jam'), __('1 comment', 'carrington-jam'), __('% comments', 'carrington-jam'));
 
 ?>
 </div><!-- .excerpt -->

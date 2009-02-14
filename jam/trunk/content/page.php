@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -22,26 +22,23 @@ global $previousday, $authordata;
 $previousday = -1;
 
 ?>
-<div class="hentry full <?php sandbox_post_class() ?>">
-	<h1 class="entry-title><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
-	<div class="entry-content">
+<div>
+
+<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+
 <?php
 
 the_content(); 
 
 link_pages();
-?>
-	</div><!--/entry-content-->
-
-<?php
 
 the_date();
 
 echo get_the_author();
 
-comments_popup_link(__('No comments', 'carrington-blog'), __('1 comment', 'carrington-blog'), __('% comments', 'carrington-blog'));
+comments_popup_link(__('No comments', 'carrington-jam'), __('1 comment', 'carrington-jam'), __('% comments', 'carrington-jam'));
 
-edit_post_link(__('Edit This', 'carrington-blog'), '', '');
+edit_post_link(__('Edit This', 'carrington-jam'), '', '');
 
 ?>
-</div><!-- .post -->
+</div>

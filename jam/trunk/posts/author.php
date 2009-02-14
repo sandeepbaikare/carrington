@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -21,32 +21,22 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $authordata;
 
 get_header();
-?>
-<div id="content">
-<?php
 
 if (have_posts()) {
 	while (have_posts()) {
 		the_post();
 ?>
 
-	<h1 class="page-title"><?php printf(__('Posts by: <a href="%s">%s</a>', 'carrington-blog'), get_author_posts_url($authordata->ID), get_author_name($authordata->ID)); ?></h1>
+	<h1><?php printf(__('Posts by: <a href="%s">%s</a>', 'carrington-jam'), get_author_posts_url($authordata->ID), get_author_name($authordata->ID)); ?></h1>
 
 <?php
 		if (!empty($bio)) {
 ?>
 
-	<div class="description author-bio">
-
-		<h2><?php printf(__('About %s', 'carrington-blog'), get_author_name($authordata->ID)); ?></h2>
+		<h2><?php printf(__('About %s', 'carrington-jam'), get_author_name($authordata->ID)); ?></h2>
 	
 <?php 
 			echo apply_filters('the_content', get_the_author_description()); 
-?>
-	
-	</div>
-
-<?php
 		}
 		break;
 	}
@@ -55,10 +45,6 @@ rewind_posts();
 
 cfct_loop();
 cfct_misc('nav-posts');
-?>
-
-</div><!--#content-->
-<?php
 
 get_sidebar();
 

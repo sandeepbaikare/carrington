@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -31,15 +31,11 @@ else {
 
 ?>
 
-<div id="content">
-	<h1 class="page-title"><?php printf(__('Search Results for: %s', 'carrington-blog'), $search_title); ?></h1>
-<?php
-	cfct_loop();
-	cfct_misc('nav-posts');
-?>
-</div><!--#content-->
+<h1><?php printf(__('Search Results for: %s', 'carrington-jam'), $search_title); ?></h1>
 
 <?php
+cfct_loop();
+cfct_misc('nav-posts');
 
 get_sidebar();
 

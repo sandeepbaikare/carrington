@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington Blog Theme for WordPress
+// This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -24,17 +24,15 @@ $cat_title = '<a href="'.get_category_link(intval(get_query_var('cat'))).'" titl
 
 ?>
 
-<div id="content">
-	<h1 class="page-title"><?php printf(__('Category Archives: %s', 'carrington-blog'), $cat_title); ?></h1>
-
-	<div class="description"><?php echo category_description(); ?></div>
+<h1><?php printf(__('Category Archives: %s', 'carrington-jam'), $cat_title); ?></h1>
 
 <?php
-	cfct_loop();
-	cfct_misc('nav-posts');
-?>
-</div>
-<?php 
+
+echo category_description();
+
+cfct_loop();
+cfct_misc('nav-posts');
+
 get_sidebar();
 
 get_footer();
