@@ -27,7 +27,7 @@ if ('open' == $post->comment_status) {
 	// if you need to be regestered to post comments..
 	if ( get_option('comment_registration') && !$user_ID ) { ?>
 
-<p id="you-must-be-logged-in-to-comment"><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'carrington-jam'), get_bloginfo('wpurl').'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
+<p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'carrington-jam'), get_bloginfo('wpurl').'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
 
 <?php
 	}
