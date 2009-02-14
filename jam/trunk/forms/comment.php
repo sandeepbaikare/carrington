@@ -34,27 +34,23 @@ if ('open' == $post->comment_status) {
 	else { 
 ?>
 
-<form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post" class="comment-form">
-	<div id="comment-form-comment" class="section">
-		<label id="respond" for="comment"><?php _e('Post a comment', 'carrington-jam'); ?></label>
-		<div>
-			<p class="alignright" id="some-html-is-ok"><abbr title="<?php printf(__('You can use: %s', 'carrington-jam'), allowed_tags()); ?>"><?php _e('Some HTML is OK', 'carrington-jam'); ?></abbr></p>
-			<textarea name="comment" id="comment" rows="8" cols="40" tabindex="1"></textarea>
-		</div>
-	</div>
+<form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
+	<label id="respond" for="comment"><?php _e('Post a comment', 'carrington-jam'); ?></label>
+	<p><abbr title="<?php printf(__('You can use: %s', 'carrington-jam'), allowed_tags()); ?>"><?php _e('Some HTML is OK', 'carrington-jam'); ?></abbr></p>
+	<textarea name="comment" id="comment" rows="8" cols="40" tabindex="1"></textarea>
 <?php // if you're logged in...
 		if ($user_ID) {
 ?>
-	<p class="logged-in section"><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'carrington-jam'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout() ?> </p>
+	<p><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'carrington-jam'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout() ?> </p>
 <?php
 		}
 		else { 
 ?>
-	<p id="comment-form-name" class="section">
+	<p>
 		<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="2" />
 		<label for="author"><?php _e('Name', 'carrington-jam'); if ($req) { echo ' <em>' , _e('(required)', 'carrington-jam'), '</em>'; } ?></label>
-	</p><!--/name-->
-	<p id="comment-form-email" class="section">
+	</p>
+	<p>
 		<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="3" />
 		<label for="email"><?php _e('Email', 'carrington-jam');
 					if ($req) {
@@ -64,19 +60,19 @@ if ('open' == $post->comment_status) {
 						_e('(never shared)', 'carrington-jam');
 					}
 		?></label>
-	</p><!--/email-->
-	<p id="comment-form-url" class="section">
+	</p>
+	<p>
 		<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="4" />
 		<label title="<?php _e('Your website address', 'carrington-jam'); ?>" for="url"><?php _e('Web', 'carrington-jam'); ?></label>
-	</p><!--/url-->
+	</p>
 <?php 
 		} 
 ?>
-	<div class="section actions">
+	<p>
 		<input name="submit" type="submit" id="submit" value="<?php _e('Post comment', 'carrington-jam'); ?>" tabindex="5" />
-		<span id="comment-form-trackback"><?php printf(__('or, reply to this post via <a rel="trackback" href="%s">trackback</a>.', 'carrington-jam'), get_trackback_url()); ?></span>
+		<?php printf(__('or, reply to this post via <a rel="trackback" href="%s">trackback</a>.', 'carrington-jam'), get_trackback_url()); ?>
 		<input type="hidden" name="comment_post_ID" value="<?php echo $post->ID; ?>" />
-	</div><!--/controls-->
+	</p>
 <?php
 do_action('comment_form', $post->ID);
 ?>
