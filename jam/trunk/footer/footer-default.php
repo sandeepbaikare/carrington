@@ -18,7 +18,7 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-_e('Proudly powered by <a href="http://wordpress.org/" title="WordPress" rel="generator">WordPress</a></span> and <span id="theme-link"><a href="http://carringtontheme.com" title="Carrington theme for WordPress">Carrington</a></span>.', 'carrington-jam'); 
+_e('Proudly powered by <a href="http://wordpress.org/" title="WordPress" rel="generator">WordPress</a> and <a href="http://carringtontheme.com" title="Carrington theme for WordPress">Carrington</a>.', 'carrington-jam'); 
 
 wp_footer();
 
