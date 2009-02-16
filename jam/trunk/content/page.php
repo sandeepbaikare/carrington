@@ -19,6 +19,8 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 global $previousday, $authordata;
+
+// Causes the_date to display every time, instead of just once per day.
 $previousday = -1;
 
 ?>
