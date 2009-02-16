@@ -21,18 +21,18 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $comments, $comment;
 
 ?>
-	<ol>
+<ol>
 <?php
 foreach ($comments as $comment) {
 	if (get_comment_type() != 'comment') {
 ?>
-		<li>
+	<li>
 <?php
-		cfct_comment();
+	cfct_comment();
 ?>
-		</li>
+	</li>
 <?php
 	}
 }
 ?>
-	</ol>
+</ol>
