@@ -31,6 +31,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	<?php wp_get_archives('type=monthly&format=link'); ?>
 	
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url') ?>" />
+	
+	<?php
+	// Javascript for threaded comments
+	if ( is_singular() ) { wp_enqueue_script( 'comment-reply' ); } ?>
+	
 	<?php wp_head(); ?>
 </head>
 

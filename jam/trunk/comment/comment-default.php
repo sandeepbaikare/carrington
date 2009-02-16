@@ -28,13 +28,13 @@ if (function_exists('get_avatar')) {
 	echo get_avatar($comment, 54);
 }
 
-get_comment_author_link();
+comment_author_link();
 
 comment_text();
 
 comment_date();
 
-comment_time();
+echo '<a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'">', comment_time(), '</a>';
 
 edit_comment_link(__('Edit This', 'carrington-jam'), '', '');
 

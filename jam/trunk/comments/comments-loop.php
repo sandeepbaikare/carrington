@@ -23,16 +23,27 @@ global $comments, $comment;
 ?>
 	<ol>
 <?php
-foreach ($comments as $comment) {
-	if (get_comment_type() == 'comment') {
+if (function_exists('wp_list_comments')) {
+	wp_list_comments('callback=cfct_comment_callback');
+} else {
+	foreach ($comments as $comment) {
+		if (get_comment_type() == 'comment') {
 ?>
-		<li>
+		<li id="comment-<?php comment_ID(); ?>">
 <?php
 		cfct_comment();
 ?>
 		</li><!--.hentry-->
 <?php
+		}
 	}
 }
 ?>
 	</ol>
+	
+<?php
+if(function_exists('previous_comments_link')){
+	previous_comments_link();
+	next_comments_link();
+}
+?>

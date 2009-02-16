@@ -29,7 +29,7 @@ if ($comments || 'open' == $post->comment_status) {
 
 ?>
 
-<h2 class="comments"><?php echo $comment_title; ?></h2>
+<h2 id="comments"><?php echo $comment_title; ?></h2>
 
 <p><?php printf(__('Stay in touch with the conversation, subscribe to the <a class="feed" rel="alternate" href="%s"><acronym title="Really Simple Syndication">RSS</acronym> feed for comments on this post</a>.', 'carrington-jam'), get_post_comments_feed_link($post->ID, '')); ?></p>
 
@@ -58,8 +58,8 @@ if ($comments || 'open' == $post->comment_status) {
 			cfct_template_file('comments', 'pings-loop');
 		}
 	}
-	
-	cfct_form('comment');
+	// Wrap comment form in div with this id for WP comment_reply script
+	echo '<div id="respond">', cfct_form('comment'), '</div>';
 }
 
 ?>
