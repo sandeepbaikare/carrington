@@ -35,3 +35,5 @@ comment_text();
 comment_date();
 
 edit_comment_link(__('Edit This', 'carrington-jam'), '', '');
+
+?>
