@@ -14,14 +14,21 @@
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 // **********************************************************************
+
+if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
+
+global $post, $comment;
+
+extract($data);
+
 ?>
 
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
 	<div id="comment-<?php comment_ID(); ?>">
 <?php
 		cfct_comment();
-		extract($cfct_comment_thread_data);
-		comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])));
+		comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post);
 ?>
 	</div>
 <?php
