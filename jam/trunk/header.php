@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of the Carrington JAM Theme for WordPress
+// This file is part of the Carrington Blog Theme for WordPress
 // http://carringtontheme.com
 //
 // Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
@@ -16,6 +16,8 @@
 // **********************************************************************
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+
+// NOTE: this file is here for compatibility reasons - active templates are in the header/ dir 
 
 cfct_header();
 
