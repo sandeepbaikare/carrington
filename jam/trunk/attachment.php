@@ -16,12 +16,10 @@
 // **********************************************************************
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-load_theme_textdomain('carrington-jam');
+// NOTE: this file is here for compatibility reasons - active templates are in the attachment/ dir 
 
-define('CFCT_DEBUG', true);
-define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
-
-include_once(CFCT_PATH.'carrington-core/carrington.php');
+cfct_attachment();
 
 ?>
