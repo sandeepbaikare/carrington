@@ -58,8 +58,7 @@ if ($comments || 'open' == $post->comment_status) {
 			cfct_template_file('comments', 'pings-loop');
 		}
 	}
-	// Wrap comment form in div with this id for WP comment_reply script
-	echo '<div id="respond">', cfct_form('comment'), '</div>';
+	cfct_form('comment');
 }
 
 ?>

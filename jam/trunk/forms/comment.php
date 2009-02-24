@@ -33,7 +33,7 @@ if ('open' == $post->comment_status) {
 	}
 	else { 
 ?>
-
+<div id="respond">
 <form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
 	<label for="comment"><?php if(function_exists('comment_form_title')) {
 		comment_form_title();
@@ -88,6 +88,7 @@ if ('open' == $post->comment_status) {
 	do_action('comment_form', $post->ID);
 ?>
 </form>
+</div>
 <?php 
 	} // If registration required and not logged in 
 } // If you delete this the sky will fall on your head

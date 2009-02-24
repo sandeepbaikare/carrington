@@ -18,17 +18,12 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $post, $comment;
-
-extract($data);
-
 ?>
 
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-	<div id="comment-<?php comment_ID(); ?>">
+<li class="li-comment" id="li-comment-<?php comment_ID() ?>">
+	<div class="div-comment" id="div-comment-<?php comment_ID(); ?>">
 <?php
-		cfct_comment();
-		comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post);
+		cfct_template_file('comment', 'comment-default', $data);
 ?>
 	</div>
 <?php
