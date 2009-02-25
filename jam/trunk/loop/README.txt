@@ -27,6 +27,13 @@ For example, you might want posts on a search results page to display differentl
 - tag.php
 - tag-{slug}.php
 
+This also supports all "content" templates for single pages using single-(standard content template name).php. Some examples:
+
+- single-meta-{meta}-{key}.php
+- single-cat-{slug}.php
+- single-tag-{slug}.php
+- single-author-{username}.php
+
 
 ### File Descriptions
 
