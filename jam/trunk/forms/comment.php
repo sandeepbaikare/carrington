@@ -18,7 +18,10 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $post, $user_ID, $user_identity, $comment_author, $comment_author_email, $comment_author_url;
+global $post, $user_ID, $user_identity;
+
+$commenter = wp_get_current_commenter();
+extract($commenter);
 
 $req = get_option('require_name_email');
 
@@ -60,12 +63,8 @@ if ('open' == $post->comment_status) {
 	<p>
 		<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="3" />
 		<label for="email"><?php _e('Email', 'carrington-jam');
-					if ($req) {
-						echo ' <em>', _e('(required, but never shared)', 'carrington-jam'), '</em>';
-					}
-					else {
-						_e('(never shared)', 'carrington-jam');
-					}
+			$req ? $email_note = __('(required, but never shared)', 'carrington-jam') : $email_note = __('(never shared)', 'carrington-jam');
+			echo ' <em>'.$email_note.'</em>';
 		?></label>
 	</p>
 	<p>
