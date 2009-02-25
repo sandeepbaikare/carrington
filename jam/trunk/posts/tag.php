@@ -26,6 +26,8 @@ $tag_title = '<a href="'.get_tag_link(intval(get_query_var('tag_id'))).'" title=
 
 <h1><?php printf(__('Tag Archives: %s', 'carrington-jam'), $tag_title); ?></h1>
 
+<?php
+
 cfct_loop();
 cfct_misc('nav-posts');
 
