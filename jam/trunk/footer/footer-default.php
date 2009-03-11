@@ -22,6 +22,14 @@ _e('Proudly powered by <a href="http://wordpress.org/" title="WordPress" rel="ge
 
 wp_footer();
 
+if (CFCT_DEBUG) {
+?>
+
+<div style="border: 1px solid #ccc; background: #ffc; padding: 20px;">The <code>CFCT_DEBUG</code> setting is currently enabled, which shows the filepath of each included template file. To hide the file paths, edit this setting in the <?php echo CFCT_PATH; ?>functions.php file.</div>
+
+<?php
+}
+
 ?>
 </body>
 </html>
