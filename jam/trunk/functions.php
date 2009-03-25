@@ -23,5 +23,6 @@ define('CFCT_DEBUG', true);
 define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
 
 include_once(CFCT_PATH.'carrington-core/carrington.php');
+include_once(CFCT_PATH.'functions/sidebars.php');
 
 ?>
