@@ -20,7 +20,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 get_header();
 
-cfct_content();
+cfct_loop();
 
 comments_template();
 
