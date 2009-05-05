@@ -32,7 +32,7 @@ $previousday = -1;
 
 the_content(); 
 
-link_pages();
+wp_link_pages();
 
 the_date();
 
