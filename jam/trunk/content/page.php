@@ -18,11 +18,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $previousday, $authordata;
-
-// Causes the_date to display every time, instead of just once per day.
-$previousday = -1;
-
 ?>
 <div>
 
@@ -36,7 +31,7 @@ wp_link_pages();
 
 the_date();
 
-echo get_the_author();
+the_author();
 
 comments_popup_link(__('No comments', 'carrington-jam'), __('1 comment', 'carrington-jam'), __('% comments', 'carrington-jam'));
 

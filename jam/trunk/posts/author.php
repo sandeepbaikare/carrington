@@ -18,8 +18,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $authordata;
-
 get_header();
 
 if (have_posts()) {
@@ -27,16 +25,17 @@ if (have_posts()) {
 		the_post();
 ?>
 
-	<h1><?php printf(__('Posts by: <a href="%s">%s</a>', 'carrington-jam'), get_author_posts_url($authordata->ID), get_author_name($authordata->ID)); ?></h1>
+	<h1><?php printf(__('Posts by: <a href="%s">%s</a>', 'carrington-jam'), get_author_posts_url(get_the_author_meta('id')), get_the_author_meta('display_name')); ?></h1>
 
 <?php
+		$bio = get_the_author_meta('description');
 		if (!empty($bio)) {
 ?>
 
-		<h2><?php printf(__('About %s', 'carrington-jam'), get_author_name($authordata->ID)); ?></h2>
+		<h2><?php printf(__('About %s', 'carrington-jam'), get_the_author_meta('display_name')); ?></h2>
 	
 <?php 
-			echo cfct_basic_content_formatting(get_the_author_description()); 
+			echo cfct_basic_content_formatting($bio); 
 		}
 		break;
 	}
