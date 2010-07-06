@@ -18,17 +18,18 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $post, $user_ID, $user_identity;
+global $post, $user_identity;
 
 $commenter = wp_get_current_commenter();
+
 extract($commenter);
 
 $req = get_option('require_name_email');
 
 // if post is open to new comments
-if ('open' == $post->comment_status) {
+if (comments_open()) {
 	// if you need to be regestered to post comments..
-	if ( get_option('comment_registration') && !$user_ID ) { ?>
+	if ( get_option('comment_registration') && !is_user_logged_in() ) { ?>
 
 <p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'carrington-jam'), get_bloginfo('wpurl').'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
 
@@ -38,20 +39,17 @@ if ('open' == $post->comment_status) {
 ?>
 <div id="respond">
 <form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
-	<label for="comment"><?php if(function_exists('comment_form_title')) {
-		comment_form_title();
-	} else {
-		_e('Post a comment', 'carrington-jam');
-	}?></label>
-	
-	<?php if(function_exists('cancel_comment_reply_link')) { cancel_comment_reply_link(); } ?>
-	
+	<label for="comment"><?php comment_form_title(__('Post a comment', 'carrington-jam'), __('Reply to %s', 'carrington-jam')); ?></label>
+	<?php cancel_comment_reply_link(); ?>
 	<p><abbr title="<?php printf(__('You can use: %s', 'carrington-jam'), allowed_tags()); ?>"><?php _e('Some HTML is OK', 'carrington-jam'); ?></abbr></p>
 	<textarea name="comment" id="comment" rows="8" cols="40" tabindex="1"></textarea>
-<?php // if you're logged in...
-		if ($user_ID) {
+<?php
+		if (is_user_logged_in()) {
 ?>
-	<p><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'carrington-jam'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout() ?> </p>
+	<p><?php
+			printf(__('Logged in as <a href="%s">%s</a>. ', 'carrington-jam'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity);
+			wp_loginout();
+		?></p>
 <?php
 		}
 		else { 
@@ -79,11 +77,7 @@ if ('open' == $post->comment_status) {
 		<?php printf(__('or, reply to this post via <a rel="trackback" href="%s">trackback</a>.', 'carrington-jam'), get_trackback_url()); ?>
 	</p>
 <?php
-	if(function_exists('comment_id_fields')) {
-		comment_id_fields();
-	} else {
-		echo '<input type="hidden" name="comment_post_ID" value="'.$post->ID.'" />';
-	}
+	comment_id_fields();
 	do_action('comment_form', $post->ID);
 ?>
 </form>
