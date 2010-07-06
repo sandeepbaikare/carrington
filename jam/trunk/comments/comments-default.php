@@ -20,22 +20,17 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 global $post, $wp_query, $comments, $comment;
 
-if (have_comments() || 'open' == $post->comment_status) {
-	if (empty($post->post_password) || $_COOKIE['wp-postpass_' . COOKIEHASH] == $post->post_password) {
-		$comments = $wp_query->comments;
-		$comment_count = count($comments);
-		$comment_count == 1 ? $comment_title = __('One Response', 'carrington-jam') : $comment_title = sprintf(__('%d Responses', 'carrington-jam'), $comment_count);
-	}
-
+if (have_comments() || comments_open()) {
 ?>
 
-<h2 id="comments"><?php echo $comment_title; ?></h2>
+<h2 id="comments"><?php comments_number('', __('One Response', 'carrington-jam'), __('% Responses', 'carrington-jam')); ?></h2>
 
 <p><?php printf(__('Stay in touch with the conversation, subscribe to the <a class="feed" rel="alternate" href="%s"><acronym title="Really Simple Syndication">RSS</acronym> feed for comments on this post</a>.', 'carrington-jam'), get_post_comments_feed_link($post->ID, '')); ?></p>
 
 <?php 
 
-	if ($comments) {
+	if (!post_password_required()) {
+		$comments = $wp_query->comments;
 		$comment_count = 0;
 		$ping_count = 0;
 		foreach ($comments as $comment) {
@@ -47,15 +42,16 @@ if (have_comments() || 'open' == $post->comment_status) {
 			}
 		}
 		if ($comment_count) {
-			cfct_template_file('comments', 'comments-loop');
+			echo '<ol>', wp_list_comments('type=comment&callback=cfct_threaded_comment'), '</ol>';
+			
+			previous_comments_link();
+			next_comments_link();
 		}
 		if ($ping_count) {
-
 ?>
 <h3 class="pings"><?php _e('Continuing the Discussion', 'carrington-jam'); ?></h3>
 <?php
-
-			cfct_template_file('comments', 'pings-loop');
+			echo '<ol>', wp_list_comments('type=pings&callback=cfct_threaded_comment'), '</ol>';
 		}
 	}
 	cfct_form('comment');

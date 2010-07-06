@@ -18,8 +18,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $comment;
-
 comment_author_link();
 
 comment_text();
