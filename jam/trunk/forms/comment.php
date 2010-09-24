@@ -31,7 +31,12 @@ if (comments_open()) {
 	// if you need to be regestered to post comments..
 	if ( get_option('comment_registration') && !is_user_logged_in() ) { ?>
 
-<p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'carrington-jam'), get_bloginfo('wpurl').'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
+<p><?php
+		printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'carrington-jam'), wp_login_url(urlencode(get_permalink())) );
+		if (get_option('users_can_register')) {
+			printf(' ' . __('Not a member? %s now!', 'carrington-jam'), wp_register('','', false) );
+		}
+		?></p>
 
 <?php
 	}
