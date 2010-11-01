@@ -23,7 +23,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <div id="sidebar">
 	<div id="primary-sidebar">
 <?php
-$post = $orig_post;
+
 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') ) {
 ?>
 		<div class="widget">
