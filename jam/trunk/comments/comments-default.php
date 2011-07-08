@@ -27,8 +27,7 @@ if (have_comments() || comments_open()) {
 
 <p><?php printf(__('Stay in touch with the conversation, subscribe to the <a class="feed" rel="alternate" href="%s"><acronym title="Really Simple Syndication">RSS</acronym> feed for comments on this post</a>.', 'carrington-jam'), get_post_comments_feed_link($post->ID, '')); ?></p>
 
-<?php 
-
+<?php
 	if (!post_password_required()) {
 		$comments = $wp_query->comments;
 		$comment_count = 0;
@@ -54,7 +53,8 @@ if (have_comments() || comments_open()) {
 			echo '<ol>', wp_list_comments('type=pings&callback=cfct_threaded_comment'), '</ol>';
 		}
 	}
-	cfct_form('comment');
+	
+	comment_form();
 }
 
 ?>
